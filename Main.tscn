@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=4 uid="uid://cb5q4ysm7u68j"]
+
+[ext_resource type="Script" uid="uid://ce83poc08sdwf" path="res://Main.gd" id="1_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://balmtb6vtwk7e" path="res://assets/tileset.png" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://dp4mfik3on0sg" path="res://HexManager.gd" id="3_cm0pq"]
+[ext_resource type="Script" uid="uid://t5kjk00fsm7k" path="res://addons/hexagon_tilemaplayer/demo/camera_movement.gd" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://vd8y5ftpb0rm" path="res://Player.tscn" id="5_fos0i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm0pq"]
+texture = ExtResource("1_uu6xs")
+texture_region_size = Vector2i(256, 256)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+1:0/next_alternative_id = 6
+1:0/0 = 0
+2:0/next_alternative_id = 2
+2:0/0 = 0
+3:0/next_alternative_id = 8
+3:0/0 = 0
+0:1/next_alternative_id = 2
+0:1/0 = 0
+1:1/next_alternative_id = 2
+1:1/0 = 0
+2:1/next_alternative_id = 2
+2:1/0 = 0
+3:1/next_alternative_id = 2
+3:1/0 = 0
+0:2/next_alternative_id = 2
+0:2/0 = 0
+1:2/next_alternative_id = 2
+1:2/0 = 0
+2:2/next_alternative_id = 2
+2:2/0 = 0
+3:2/next_alternative_id = 2
+3:2/0 = 0
+0:3/next_alternative_id = 2
+0:3/0 = 0
+1:3/next_alternative_id = 2
+1:3/0 = 0
+2:3/next_alternative_id = 2
+2:3/0 = 0
+3:3/next_alternative_id = 2
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fos0i"]
+tile_shape = 3
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_cm0pq")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_cm0pq")
+
+[node name="Map" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD/////AAADAAEAAAD+////AAADAAEAAAD9////AAADAAEAAAAAAP//AAADAAEAAAABAP//AAADAAEAAAD+//3/AAADAAEAAAD///3/AAADAAEAAAAAAP3/AAADAAEAAAABAP7/AAADAAEAAAAAAP7/AAADAAEAAAD///7/AAADAAEAAAD+//7/AAADAAEAAAD+/wAAAAADAAEAAAD+/wEAAAADAAEAAAD//wAAAAADAAEAAAAAAAAAAAADAAEAAAAAAAEAAAADAAEAAAABAAAAAAADAAEAAAD8////AAADAAEAAAD9//7/AAADAAEAAAD9//3/AAADAAEAAAD+//z/AAADAAEAAAD///z/AAADAAEAAAAAAPz/AAADAAEAAAABAPz/AAADAAEAAAABAP3/AAADAAEAAAACAP7/AAADAAEAAAACAP//AAADAAEAAAACAAAAAAADAAEAAAABAAEAAAADAAEAAAABAAIAAAADAAEAAAD9/wEAAAADAAEAAAD9/wAAAAADAAEAAAD+/wIAAAADAAEAAAD//wEAAAADAAEAAAD//wIAAAADAAEAAAAAAAIAAAADAAEAAAA=")
+tile_set = SubResource("TileSet_fos0i")
+script = ExtResource("3_cm0pq")
+debug_mode = 1
+metadata/_custom_type_script = "uid://buj6ft1vvdf2f"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("3_r0du0")
+
+[node name="Player" parent="." instance=ExtResource("5_fos0i")]
